@@ -1,141 +1,100 @@
-HashMap Class
-Overview
+# HashMap Implementation in JavaScript
 
-The HashMap class is a JavaScript implementation of a hash map data structure, which allows you to store key-value pairs with efficient lookup, insertion, and deletion operations. The hash map uses separate chaining with an array of buckets to handle collisions.
-Features
+This project is a simple implementation of a **HashMap** data structure in JavaScript. It provides basic operations for managing key-value pairs, including adding, retrieving, updating, and removing entries, as well as utility functions to interact with the map.
 
-    Hashing Function: Converts keys to a hash code to determine their position in the bucket array.
-    Dynamic Resizing: Automatically resizes the hash map when the number of entries exceeds a predefined load factor.
-    Basic Operations: Provides methods to add, retrieve, check, remove, and clear key-value pairs.
-    Utility Methods: Methods to get the number of entries, list all keys, values, and key-value pairs.
+## Features
 
-Installation
+- **Set**: Add or update a key-value pair in the hash map.
+- **Get**: Retrieve the value associated with a given key.
+- **Has**: Check if a specific key exists in the hash map.
+- **Remove**: Remove a key-value pair by key.
+- **Length**: Get the total number of key-value pairs in the hash map.
+- **Clear**: Remove all key-value pairs from the hash map.
+- **Keys**: Get an array of all keys in the hash map.
+- **Values**: Get an array of all values in the hash map.
+- **Entries**: Get an array of all key-value pairs in the hash map.
 
-You can include the HashMap class in your project by copying the code and saving it in a file, e.g., HashMap.js.
+## Project Structure
 
-javascript
+```plaintext
+HashMap/
+├── test.mjs         # Contains testing code 
+└── hashmap.mjs      # Contains the HashMap class with all methods
+```
 
-import { HashMap } from './HashMap';
+## HashMap Class (hashmap.mjs)
 
-Usage
+The `HashMap` class manages a collection of key-value pairs with efficient operations and dynamic resizing. Below are the methods included:
 
-Here is a brief overview of how to use the HashMap class:
-Creating a HashMap
+### Constructor
 
-javascript
+- `constructor(size = 16)`: Initializes the hash map with a given size (default is 16).
 
-const map = new HashMap();
+### Methods
 
-Adding Key-Value Pairs
+- `hash(key)`: Computes and returns a hash code for the given key.
 
-javascript
+- `resizeArray()`: Doubles the size of the hash map's bucket array and rehashes all entries.
 
-map.set('key1', 'value1');
-map.set('key2', 'value2');
+- `set(key, value)`: Adds or updates a key-value pair in the hash map.
 
-Retrieving Values
+- `get(key)`: Retrieves the value associated with the given key. Returns `null` if the key does not exist.
 
-javascript
+- `has(key)`: Checks if the given key exists in the hash map.
 
-const value = map.get('key1'); // 'value1'
+- `remove(key)`: Removes the key-value pair associated with the given key. Returns `true` if successful, or `false` otherwise.
 
-Checking for Key Presence
+- `length()`: Returns the number of key-value pairs in the hash map.
 
-javascript
+- `clear()`: Removes all key-value pairs from the hash map.
 
-const hasKey = map.has('key1'); // true
+- `keys()`: Returns an array of all keys in the hash map.
 
-Removing Key-Value Pairs
+- `values()`: Returns an array of all values in the hash map.
 
-javascript
+- `entries()`: Returns an array of all key-value pairs in the hash map.
 
-const removed = map.remove('key1'); // true if the key was removed
+## Usage
 
-Getting the Number of Entries
+1. **Installation**: Clone the repository and navigate to the project directory.
+   ```bash
+   git clone git@github.com:shahidafridi-321/hashmap.git
+   cd hash-map
+   ```
 
-javascript
+2. **Import the Class**: In your JavaScript file, import the `HashMap` class.
+   ```javascript
+   import { HashMap } from './hashmap.mjs';
+   ```
 
-const size = map.length(); // Returns the number of key-value pairs
+3. **Example Usage**:
+   ```javascript
+   const map = new HashMap();
 
-Clearing All Entries
+   map.set('key1', 'value1');
+   map.set('key2', 'value2');
 
-javascript
+   console.log(map.get('key1'));  // 'value1'
+   console.log(map.has('key2'));  // true
+   console.log(map.length());     // 2
 
-map.clear();
+   map.remove('key1');
+   console.log(map.has('key1'));  // false
 
-Listing All Keys
+   console.log(map.keys());       // ['key2']
+   console.log(map.values());     // ['value2']
+   console.log(map.entries());    // [['key2', 'value2']]
+   ```
 
-javascript
+## Contributing
 
-const keys = map.keys(); // ['key2']
+Feel free to submit issues or contribute to the project. To contribute:
 
-Listing All Values
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes and commit them.
+4. Push your branch and create a pull request.
 
-javascript
+## License
 
-const values = map.values(); // ['value2']
-
-Listing All Key-Value Pairs
-
-javascript
-
-const entries = map.entries(); // [['key2', 'value2']]
-
-Methods
-constructor(size = 16)
-
-    Initializes the hash map with a given size (default is 16).
-
-hash(key)
-
-    Computes and returns a hash code for the given key.
-
-resizeArray()
-
-    Resizes the hash map's bucket array when the load factor exceeds a threshold.
-
-set(key, value)
-
-    Adds or updates the key-value pair in the hash map.
-
-get(key)
-
-    Retrieves the value associated with the given key, or null if the key does not exist.
-
-has(key)
-
-    Checks if the given key exists in the hash map.
-
-remove(key)
-
-    Removes the key-value pair associated with the given key and returns true if successful, or false otherwise.
-
-length()
-
-    Returns the number of key-value pairs in the hash map.
-
-clear()
-
-    Removes all key-value pairs from the hash map.
-
-keys()
-
-    Returns an array of all keys in the hash map.
-
-values()
-
-    Returns an array of all values in the hash map.
-
-entries()
-
-    Returns an array of all key-value pairs in the hash map.
-
-Notes
-
-    The HashMap implementation is based on a hash table with separate chaining for collision resolution.
-    The hash function uses a prime number and modulo operation to distribute keys uniformly across the bucket array.
-    The class automatically resizes itself to maintain performance as the number of entries grows.
-
-License
-
-This project is licensed under the MIT License.
+This project is open-source and available under the [MIT License](LICENSE).
