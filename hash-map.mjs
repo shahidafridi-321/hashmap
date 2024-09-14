@@ -1,5 +1,6 @@
 // A HASHMAP CLASS
-class HashMap {
+
+export class HashMap {
 	constructor(size = 16) {
 		this.totalSize = size;
 		this.buckets = Array(this.totalSize) // creates an array of given size then fill the array with null so the map array method should iterate over it and returns an empty array for all the elements
