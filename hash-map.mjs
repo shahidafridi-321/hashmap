@@ -80,6 +80,7 @@ export class HashMap {
 		return false;
 	}
 
+	// removes an entry at the given key/index
 	remove(key) {
 		let index = this.hash(key);
 		let bucket = this.buckets[index];
@@ -136,9 +137,5 @@ export class HashMap {
 			return total;
 		}, []);
 		return values;
-	}
-
-	getBucket() {
-		return this.buckets;
 	}
 }
