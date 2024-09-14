@@ -29,9 +29,21 @@ class HashMap {
 		}
 		bucket.push([key, value]);
 	}
+
+	// takes a key and return a value at that bucket if found otherwise returns null
+	get(key) {
+		let index = this.hash(key);
+		let bucket = this.buckets[index];
+		for (let i = 0; i < bucket.length; i++) {
+			if (bucket[i][0] === key) {
+				return bucket[i][1];
+			}
+		}
+		return null;
+	}
 }
 
 let hashMap = new HashMap();
-/* hashMap.set("shahid", "afridi");
+hashMap.set("shahid", "afridi");
 hashMap.set("shahi", "khan");
-console.log(hashMap.getBuckets()); */
+console.log(hashMap.get("shah"));
