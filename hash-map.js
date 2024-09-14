@@ -1,10 +1,12 @@
 // A HASHMAP CLASS
 class HashMap {
 	constructor(size = 16) {
-		this.size = size;
-		this.buckets = Array(this.size) // creates an array of given size then fill the array with null so the map array method should iterate over it and returns an empty array for all the elements
+		this.totalSize = size;
+		this.buckets = Array(this.totalSize) // creates an array of given size then fill the array with null so the map array method should iterate over it and returns an empty array for all the elements
 			.fill(null)
 			.map(() => []);
+		this.totalEntries = 0;
+		this.loadFactor = 0.75;
 	}
 
 	// take a string and generates and returns a hashCode for that string,the primeNumber is used to reduce the likely hood, the modulo operator is used to reduce a long hashCode to be inside the array index
@@ -12,9 +14,26 @@ class HashMap {
 		let hashCode = 0;
 		let primeNumber = 31;
 		for (let i = 0; i < key.length; i++) {
-			hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.size;
+			hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.totalSize;
 		}
 		return hashCode;
+	}
+
+	// resizes the array/doubles the size
+	resizeArray() {
+		this.totalSize *= 2;
+
+		let oldBuckets = this.buckets; // copy the existing buckets array
+		this.buckets = Array(this.totalSize) // resize the array to double of previous
+			.fill(null)
+			.map(() => []);
+
+		this.totalEntries = 0;
+		oldBuckets.forEach((bucket) => {
+			for (let [key, value] of bucket) {
+				this.set(key, value); // reinserts the old entries in the new array
+			}
+		});
 	}
 
 	// take key and a value,the key is converted to an index,at that index in buckets array ,if the key is already here then update the value otherwise put key value pair at that index
@@ -28,6 +47,12 @@ class HashMap {
 			}
 		}
 		bucket.push([key, value]);
+		this.totalEntries++;
+
+		let capacity = this.totalEntries / this.totalSize;
+		if (capacity > this.loadFactor) {
+			this.resizeArray();
+		}
 	}
 
 	// takes a key and return a value at that bucket if found otherwise returns null
@@ -100,7 +125,7 @@ class HashMap {
 		}, []);
 		return values;
 	}
-	
+
 	//returns an array that contains each key, value pair.
 	entries() {
 		let values = this.buckets.reduce((total, bucket) => {
@@ -116,17 +141,3 @@ class HashMap {
 		return this.buckets;
 	}
 }
-
-let hashMap = new HashMap();
-hashMap.set("shahid", "afridi");
-hashMap.set("shahi", "khan");
-
-/* console.log(hashMap.getBucket());
-
- console.log(hashMap.remove("shahi")); 
-
-console.log(hashMap.length());
-hashMap.clear(); */
-console.log(hashMap.getBucket());
-
-console.log(hashMap.entries());
