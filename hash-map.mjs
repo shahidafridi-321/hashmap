@@ -87,6 +87,7 @@ export class HashMap {
 		for (let i = 0; i < bucket.length; i++) {
 			if (bucket[i][0] === key) {
 				bucket.splice(i, 1);
+				this.totalEntries--;
 				return true;
 			}
 		}
@@ -95,7 +96,7 @@ export class HashMap {
 
 	// returns total number of keys
 	length() {
-		return this.buckets.reduce((total, bucket) => total + bucket.length, 0);
+		return this.totalEntries;
 	}
 
 	// clears all the entries in the hash map
@@ -105,6 +106,7 @@ export class HashMap {
 			// modify the existed one
 			this.buckets[index] = [];
 		});
+		this.totalEntries = 0;
 	}
 
 	// returns an array containing all the keys inside the hash map
