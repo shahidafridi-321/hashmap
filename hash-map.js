@@ -80,7 +80,7 @@ class HashMap {
 		});
 	}
 
-	// returns all the keys inside bucket
+	// returns an array containing all the keys inside the hash map
 	keys() {
 		let keys = this.buckets.reduce((total, bucket) => {
 			bucket.forEach((enter) => {
@@ -89,6 +89,16 @@ class HashMap {
 			return total;
 		}, []);
 		return keys;
+	}
+	// returns an array containing all the values.
+	values() {
+		let values = this.buckets.reduce((total, bucket) => {
+			bucket.forEach((enter) => {
+				total.push(enter[1]);
+			});
+			return total;
+		}, []);
+		return values;
 	}
 
 	getBucket() {
@@ -108,4 +118,4 @@ console.log(hashMap.length());
 hashMap.clear(); */
 console.log(hashMap.getBucket());
 
-console.log(hashMap.keys());
+console.log(hashMap.values());
