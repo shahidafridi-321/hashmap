@@ -18,7 +18,7 @@ This project is a simple implementation of a **HashMap** data structure in JavaS
 
 ```plaintext
 HashMap/
-├── test.mjs         # Contains testing code 
+├── test.mjs         # Contains testing code
 └── hashmap.mjs      # Contains the HashMap class with all methods
 ```
 
@@ -57,33 +57,36 @@ The `HashMap` class manages a collection of key-value pairs with efficient opera
 ## Usage
 
 1. **Installation**: Clone the repository and navigate to the project directory.
+
    ```bash
    git clone git@github.com:shahidafridi-321/hashmap.git
    cd hash-map
    ```
 
 2. **Import the Class**: In your JavaScript file, import the `HashMap` class.
+
    ```javascript
-   import { HashMap } from './hashmap.mjs';
+   import { HashMap } from "./hashmap.mjs";
    ```
 
 3. **Example Usage**:
+
    ```javascript
    const map = new HashMap();
 
-   map.set('key1', 'value1');
-   map.set('key2', 'value2');
+   map.set("key1", "value1");
+   map.set("key2", "value2");
 
-   console.log(map.get('key1'));  // 'value1'
-   console.log(map.has('key2'));  // true
-   console.log(map.length());     // 2
+   console.log(map.get("key1")); // 'value1'
+   console.log(map.has("key2")); // true
+   console.log(map.length()); // 2
 
-   map.remove('key1');
-   console.log(map.has('key1'));  // false
+   map.remove("key1");
+   console.log(map.has("key1")); // false
 
-   console.log(map.keys());       // ['key2']
-   console.log(map.values());     // ['value2']
-   console.log(map.entries());    // [['key2', 'value2']]
+   console.log(map.keys()); // ['key2']
+   console.log(map.values()); // ['value2']
+   console.log(map.entries()); // [['key2', 'value2']]
    ```
 
 ## Contributing
