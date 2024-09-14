@@ -80,6 +80,17 @@ class HashMap {
 		});
 	}
 
+	// returns all the keys inside bucket
+	keys() {
+		let keys = this.buckets.reduce((total, bucket) => {
+			bucket.forEach((enter) => {
+				total.push(enter[0]);
+			});
+			return total;
+		}, []);
+		return keys;
+	}
+
 	getBucket() {
 		return this.buckets;
 	}
@@ -89,10 +100,12 @@ let hashMap = new HashMap();
 hashMap.set("shahid", "afridi");
 hashMap.set("shahi", "khan");
 
-console.log(hashMap.getBucket());
+/* console.log(hashMap.getBucket());
 
-console.log(hashMap.remove("shahi"));
+ console.log(hashMap.remove("shahi")); 
 
 console.log(hashMap.length());
-hashMap.clear();
+hashMap.clear(); */
 console.log(hashMap.getBucket());
+
+console.log(hashMap.keys());
