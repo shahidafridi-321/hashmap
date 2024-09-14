@@ -16,3 +16,4 @@ test.set("lion", "golden");
 test.set("lion", "shahid");
 test.set("moon", "silver");
 
+console.log(test);
