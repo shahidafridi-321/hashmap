@@ -71,10 +71,11 @@ class HashMap {
 		return this.buckets.reduce((total, bucket) => total + bucket.length, 0);
 	}
 
-  // clears all the entries in the hash map
+	// clears all the entries in the hash map
 	clear() {
 		//this.buckets = this.buckets.map(() => []); createds new array
-		this.buckets.forEach((bucket, index) => {  // modify the existed one
+		this.buckets.forEach((bucket, index) => {
+			// modify the existed one
 			this.buckets[index] = [];
 		});
 	}
