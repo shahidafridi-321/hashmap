@@ -41,9 +41,22 @@ class HashMap {
 		}
 		return null;
 	}
+
+
+  // checks if key is in the hashmap returns true other wise false
+	has(key) {
+		let index = this.hash(key);
+		let bucket = this.buckets[index];
+		for (let i = 0; i < bucket.length; i++) {
+			if (bucket[i][0] === key) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
 
 let hashMap = new HashMap();
 hashMap.set("shahid", "afridi");
 hashMap.set("shahi", "khan");
-console.log(hashMap.get("shah"));
+console.log(hashMap.has("shahi"));
