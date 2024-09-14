@@ -66,9 +66,17 @@ class HashMap {
 		return false;
 	}
 
-  // returns total number of keys
+	// returns total number of keys
 	length() {
 		return this.buckets.reduce((total, bucket) => total + bucket.length, 0);
+	}
+
+  // clears all the entries in the hash map
+	clear() {
+		//this.buckets = this.buckets.map(() => []); createds new array
+		this.buckets.forEach((bucket, index) => {  // modify the existed one
+			this.buckets[index] = [];
+		});
 	}
 
 	getBucket() {
@@ -85,3 +93,5 @@ console.log(hashMap.getBucket());
 console.log(hashMap.remove("shahi"));
 
 console.log(hashMap.length());
+hashMap.clear();
+console.log(hashMap.getBucket());
